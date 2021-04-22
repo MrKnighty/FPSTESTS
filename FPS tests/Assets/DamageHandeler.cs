@@ -5,19 +5,22 @@ using UnityEngine;
 public class DamageHandeler : MonoBehaviour
 {
 
-    public float MaxHealth;
-    public float currentHealth;
+    public float MaxHealth; // the health this will start with, and the maximum
+    public float currentHealth; // the current health of this, when it hits zero the death sequence will play
 
+    bool isPlayer;
 
-    private void OnCollisionEnter(Collision collision)
+    private void Start()
     {
-      if(collision.transform.tag == "Bullet")
+        currentHealth = MaxHealth;
+    }
+    public void DoDamage(float damage)
+    {
+        currentHealth -= damage;
+
+        if(currentHealth <= 0)
         {
-            currentHealth--;
-            if(currentHealth == 0)
-            {
-                Destroy(gameObject);
-            }
+            Destroy(this);
         }
     }
 }
