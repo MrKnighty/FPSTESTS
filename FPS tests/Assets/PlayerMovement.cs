@@ -65,6 +65,8 @@ public class PlayerMovement : MonoBehaviour
         
             transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X") * mouseSens, 0));
             mainCamera.Rotate(new Vector3(-Input.GetAxis("Mouse Y") * mouseSens, 0, 0));
+
+            
         
         
        

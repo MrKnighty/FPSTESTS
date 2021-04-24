@@ -10,7 +10,9 @@ public class Damager : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.GetComponent<DamageHandeler>()) //check if collision has the damage handler to see if it can damage it.
+        DamageHandeler dH;
+
+        if( dH = collision.gameObject.GetComponent<DamageHandeler>()) //check if collision has the damage handler to see if it can damage it.
         {
             collision.gameObject.GetComponent<DamageHandeler>().DoDamage(damage);
 

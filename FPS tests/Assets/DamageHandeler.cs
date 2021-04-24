@@ -20,7 +20,7 @@ public class DamageHandeler : MonoBehaviour
 
         if(currentHealth <= 0)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 }
