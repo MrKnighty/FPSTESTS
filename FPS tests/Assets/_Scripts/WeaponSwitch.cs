@@ -24,6 +24,8 @@ public class WeaponSwitch : MonoBehaviour
             }
 
             guns[1].gameObject.SetActive(true);
+
+            
         }
 
 

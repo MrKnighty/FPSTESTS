@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DamageHandeler : MonoBehaviour
 {
@@ -10,17 +11,26 @@ public class DamageHandeler : MonoBehaviour
 
     bool isPlayer;
 
+    public Text hpText;
+
     private void Start()
     {
         currentHealth = MaxHealth;
+        if(isPlayer) hpText.text = ("Health: " + currentHealth); 
+
     }
     public void DoDamage(float damage)
     {
         currentHealth -= damage;
 
-        if(currentHealth <= 0)
+        if(currentHealth <= 0 && !isPlayer)
         {
             Destroy(this.gameObject);
+        }
+
+        if(isPlayer)
+        {
+            hpText.text = ("Health: " + currentHealth);
         }
     }
 }
