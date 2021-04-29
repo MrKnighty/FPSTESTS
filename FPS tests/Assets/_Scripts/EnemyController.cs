@@ -7,13 +7,20 @@ public class EnemyController : MonoBehaviour
 {
     GameObject player;
     NavMeshAgent agent;
-    bool isAgroo = false;
+    public bool isAgroo = false;
     bool hasShot;
+    public bool playerDead;
 
     public GameObject muzzlePoint;
     public GameObject bullet;
+    
+    public float agrooDistance;
+    public float agrooSeeDistance;
+    public GameObject head;
 
     public float fireRate;
+
+    public LayerMask playerLM;
 
     private void Start()
     {
@@ -24,12 +31,18 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if(Vector3.Distance(this.transform.position, player.transform.position) < 10) // if the player gets in a certan radius around the enemy, start targeting
+        
+        head.transform.LookAt(player.transform);
+        RaycastHit hit;
+        if(Physics.Raycast(head.transform.position, head.transform.forward, out hit))
         {
-            isAgroo = true;
+            if(hit.transform.tag != "Player")
+            {
+                isAgroo = false;
+            }
         }
 
-        if(isAgroo)
+        if(isAgroo && !playerDead)
         {
             agent.destination = player.transform.position;
             this.transform.LookAt(player.transform);
@@ -46,14 +59,36 @@ public class EnemyController : MonoBehaviour
                 Invoke("ResetShoot", fireRate);
             }
 
+        }
+        else
+        {
+          if(Vector3.Distance(this.transform.position, player.transform.position) <= agrooDistance)
+          {
+              isAgroo = true;
+          }
 
+            
 
+          if(Physics.Raycast(head.transform.position, head.transform.forward, out hit, agrooSeeDistance))
+          {
+              if(hit.transform.tag == "Player")
+              {
+                  isAgroo = true;
+              }
+          }
+        
+            agent.destination = this.transform.position;
         }
     }
 
     void ResetShoot()
     {
         hasShot = false;
+    }
+
+    void CheckToAgroo()
+    {
+
     }
 
 

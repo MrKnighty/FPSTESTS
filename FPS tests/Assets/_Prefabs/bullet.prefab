@@ -30,13 +30,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3455494416028990231}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.641, y: 0, z: -5.472}
+  m_LocalRotation: {x: -0, y: -0.70710707, z: -0, w: 0.70710653}
+  m_LocalPosition: {x: -0, y: 0, z: -1.226}
   m_LocalScale: {x: 0.10544, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &34510824603373618
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 17a400e4387e8cf42b94d584c4f59c38, type: 2}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -194,8 +194,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.009733734
-        value: 0.14401992
+        time: 0.013266143
+        value: 0.0784529
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -216,9 +216,9 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.5849056, g: 0.24166758, b: 0, a: 1}
-      key1: {r: 0.8207547, g: 0.4348657, b: 0.16647384, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0.48235294}
+      key0: {r: 0.8862746, g: 0.61960787, b: 0.2901961, a: 1}
+      key1: {r: 0.8862746, g: 0.61960787, b: 0.2901961, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0.5176471}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -233,7 +233,7 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 43176
+      atime1: 35659
       atime2: 65535
       atime3: 0
       atime4: 0

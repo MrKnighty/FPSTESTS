@@ -9,32 +9,27 @@ public class PlayerMovement : MonoBehaviour
     public Transform mainCamera;
     public float jumpHeight;
     public float gravity;
-
+    bool dead;
 
     Vector3 playerVelocity;
     public float moveSpeed;
     public float airMovementMultiplyer;
     public float mouseSens;
-    float trueMoveSpeed; // this is the move speed that will be used for caculations, this will change when the player is mid air, so they dont have perfect air controll
+    GameManager gm;
+        float trueMoveSpeed; // this is the move speed that will be used for caculations, this will change when the player is mid air, so they dont have perfect air controll
     void Start()
     {
         characterController = gameObject.GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         trueMoveSpeed = moveSpeed;
+        gm = Object.FindObjectOfType<GameManager>();
     }
 
     private void Update()
     {
-        if(!characterController.isGrounded)
-        {
-            trueMoveSpeed = moveSpeed * airMovementMultiplyer; // add a multipleyer if there midair so aircontroll is not perfect
-        }
-        else
-        {
-            trueMoveSpeed = moveSpeed; // when the player is grounded again reset movespeed
-
-        }
-        NewMovement();
+        
+        if(gm.acceptInput) NewMovement();
+        
 
       
     }
@@ -66,13 +61,21 @@ public class PlayerMovement : MonoBehaviour
             transform.Rotate(new Vector3(0, Input.GetAxis("Mouse X") * mouseSens, 0));
             mainCamera.Rotate(new Vector3(-Input.GetAxis("Mouse Y") * mouseSens, 0, 0));
 
-            
-        
-        
-       
+        if(!characterController.isGrounded)
+        {
+            trueMoveSpeed = moveSpeed * airMovementMultiplyer; // add a multipleyer if there midair so aircontroll is not perfect
+        }
+        else
+        {
+            trueMoveSpeed = moveSpeed; // when the player is grounded again reset movespeed
 
+        }
 
+    }
 
+    public void DeathEvent()
+    {
+        dead = true;
     }
 
 }

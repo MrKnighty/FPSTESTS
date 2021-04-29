@@ -7,13 +7,17 @@ public class Shooting : MonoBehaviour
 {
     public GameObject bullet;
 
-    bool canShoot = true; // if this is false, the player cannot shoot
+    public bool canShoot = true; // if this is false, the player cannot shoot
 
     public float fireDelay; //the delay between shots
     public float reloadSpeed; // how long it takes to reload
 
-    
+    public AudioClip gunShot;
+    public AudioClip reload;
 
+    AudioSource source;
+
+    
      Animator animator;
 
 
@@ -28,6 +32,7 @@ public class Shooting : MonoBehaviour
     public Text ammoText;
 
     public LayerMask lm;
+    GameManager gm;
     
 
     private void Start()
@@ -35,6 +40,8 @@ public class Shooting : MonoBehaviour
         currentAmmo = maxAmmo; //initiate the current ammo variable with the max ammo.
         gameObject.SetActive(false); // all guns will start enabled, but after initiating set them for disable.
         animator = gameObject.GetComponent<Animator>();
+        source = gameObject.GetComponent<AudioSource>();
+        gm = Object.FindObjectOfType<GameManager>();
     }
     private void OnEnable()
     {
@@ -46,13 +53,13 @@ public class Shooting : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButton(0) && canShoot && currentAmmo! >= 1 && !reloading) 
+        if (Input.GetMouseButton(0) && canShoot && currentAmmo! >= 1 && !reloading && gm.acceptInput) 
         {
             Camera cam = Camera.main;
             RaycastHit hit;
 
-            GameObject spawnedBullet = Instantiate(bullet, muzzlePoint.transform.position, muzzlePoint.transform.rotation);
-            spawnedBullet.gameObject.GetComponent<Damager>().ModifyDamage(damage);
+            GameObject spawnedBullet = Instantiate(bullet, muzzlePoint.transform.position, muzzlePoint.transform.rotation); //spawn the bullet at the muzzle point
+            spawnedBullet.gameObject.GetComponent<Damager>().ModifyDamage(damage); //modify the damage of the spawned bullet
 
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, Mathf.Infinity)) 
              {                                                                                                       // this will point the bullet towards wherever the center of the screen is pointing at
@@ -61,18 +68,20 @@ public class Shooting : MonoBehaviour
              }
            
             
-            animator.Play("Shoot");
+            animator.Play("Shoot"); //play the animation event shoot
+            source.PlayOneShot(gunShot); // play the sound gunshot
             canShoot = false; // to add a firerate, we disable shooting after the player has shoot one bullet, then we call a funtion that resets the shooting after x secconds
-            Invoke("ResetShoot", fireDelay);
-            currentAmmo--;
-            ammoText.text = ("Ammo:" + currentAmmo + "/" + maxAmmo);
+            Invoke("ResetShoot", fireDelay); // to make a fire rate, invoke a function that will reset canshoot back to true
+            currentAmmo--; //since theese guns have a limited mag size, remove 1;
+            ammoText.text = ("Ammo:" + currentAmmo + "/" + maxAmmo); // after all caculations are done, display the current ammo
         }
-        else if (currentAmmo <=0 && !reloading  || Input.GetKeyDown("r") && !reloading) // if the user hits r, or if the player runs out of ammo invoke the reaload function
+        else if (currentAmmo <=0 && !reloading  && currentAmmo != maxAmmo || Input.GetKeyDown("r") && !reloading && currentAmmo != maxAmmo) // if the user hits r, or if the player runs out of ammo invoke the reaload function
         {
             Invoke("Reload", reloadSpeed);
             reloading = true; // set realoding to true since, we dont want the player to shoot while reloading
             ammoText.text = ("RELOADING");
             animator.Play("Reload");
+            source.PlayOneShot(reload);
         }
     }
     void ResetShoot()
