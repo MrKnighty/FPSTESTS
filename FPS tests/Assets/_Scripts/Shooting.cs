@@ -45,11 +45,11 @@ public class Shooting : MonoBehaviour
     }
     private void OnEnable()
     {
-        ammoText.text = ("Ammo:" + currentAmmo + "/" + maxAmmo);
+        ammoText.text = ("Ammo:" + currentAmmo + "/" + maxAmmo); // when swicting back to this weapon, update the ammo text so it displays the correct ammount
     }
     private void OnDisable()
     {
-        ammoText.text = ("");
+        ammoText.text = (""); // clear the text when diseqipping the weapon
     }
     private void Update()
     {
@@ -60,6 +60,7 @@ public class Shooting : MonoBehaviour
 
             GameObject spawnedBullet = Instantiate(bullet, muzzlePoint.transform.position, muzzlePoint.transform.rotation); //spawn the bullet at the muzzle point
             spawnedBullet.gameObject.GetComponent<Damager>().ModifyDamage(damage); //modify the damage of the spawned bullet
+            spawnedBullet.transform.parent = null; // deparent the bullet, so that the bullet does not get destroied, one the enenemy dies
 
             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, Mathf.Infinity)) 
              {                                                                                                       // this will point the bullet towards wherever the center of the screen is pointing at

@@ -23,8 +23,6 @@ public class WeaponSwitch : MonoBehaviour
         if (Input.GetKeyDown("4") && unlockedGuns[0] == true && gm.acceptInput) SwitchWeapon(3);
         if (Input.GetKeyDown("5") && unlockedGuns[0] == true && gm.acceptInput) SwitchWeapon(4);
         
-            
-        
     }
     void SwitchWeapon(int input)
     {
@@ -41,7 +39,9 @@ public class WeaponSwitch : MonoBehaviour
 
         foreach (GameObject guns in guns)
             {
+                guns.GetComponent<Animator>().StopPlayback(); // if you switch guns during the reload anim, it gets stuck on that animation so stop playback so that doesnt happen;
                 guns.gameObject.SetActive(false); // once the player collects a new gun, unlock it and allow it to be equped
+                
             }
 
             guns[ID].gameObject.SetActive(true); // also auto equip the new gun

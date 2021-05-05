@@ -46,8 +46,7 @@ public class DamageHandeler : MonoBehaviour
                 deathUI.gameObject.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
                 Object.FindObjectOfType<GameManager>().acceptInput = false;
-               // gameObject.GetComponent<WeaponSwitch>().PlayerDeathEvent();
-                gameObject.GetComponent<PlayerMovement>().DeathEvent();
+               // gameObject.GetComponent<WeaponSwitch>().PlayerDeathEvent();;
                 //enemyManager.GetComponent<EnemyManager>().PlayerDeathEvent();
 
             //    gameObject.GetComponent<>

@@ -15632,7 +15632,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1609985431
 Transform:
   m_ObjectHideFlags: 0
@@ -15661,6 +15661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3455494416028990231, guid: 40f52858b023c664dba77ddfddf7f93c, type: 3}
+  canShoot: 1
   fireDelay: 0.1
   reloadSpeed: 3
   gunShot: {fileID: 8300000, guid: 9aa443050e27ff242978a13ad2ea8a7f, type: 3}
@@ -18474,7 +18475,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3366582589093394785
 Transform:
   m_ObjectHideFlags: 0
@@ -18505,6 +18506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3455494416028990231, guid: 40f52858b023c664dba77ddfddf7f93c, type: 3}
+  canShoot: 1
   fireDelay: 0.4
   reloadSpeed: 1
   gunShot: {fileID: 8300000, guid: 82c59ee880910404bb635949292dc6c4, type: 3}
@@ -18765,10 +18767,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 3366582588896120235}
-  jumpHeight: 1
-  gravity: -9.81
-  moveSpeed: 2
-  airMovementMultiplyer: 0.5
+  jumpHeight: 2
+  gravity: -15
+  moveSpeed: 2.5
+  airMovementMultiplyer: 1
   mouseSens: 2
 --- !u!114 &3366582589537047381
 MonoBehaviour:
@@ -18798,9 +18800,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8ca97b322302c41923ebee43e58797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 10
+  MaxHealth: 100
   currentHealth: 0
-  hpText: {fileID: 0}
+  deathUI: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!1 &3366582589637135908
 GameObject:
   m_ObjectHideFlags: 0

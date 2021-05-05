@@ -10,6 +10,8 @@ public class EnemyController : MonoBehaviour
     public bool isAgroo = false;
     bool hasShot;
     public bool playerDead;
+    public bool useInnacuracy;
+    public float bulletSpred;
 
     public GameObject muzzlePoint;
     public GameObject bullet;
@@ -21,6 +23,7 @@ public class EnemyController : MonoBehaviour
     public float fireRate;
 
     public LayerMask playerLM;
+    public int damage;
 
     private void Start()
     {
@@ -53,10 +56,20 @@ public class EnemyController : MonoBehaviour
 
             if(!hasShot)
             {
+                Vector3 offset;
                 hasShot = true;
                 GameObject spawnedBullet = Instantiate(bullet, muzzlePoint.transform); // create a variable of the spawned object so we can point it at the player
-                spawnedBullet.transform.LookAt(player.transform.position);
+                spawnedBullet.gameObject.GetComponent<Damager>().ModifyDamage(damage);
                 Invoke("ResetShoot", fireRate);
+                if(useInnacuracy && Vector3.Distance(gameObject.transform.position, player.transform.position) >= 5) // randomly change the target in the xy directon to add some innacruacy so that the enemies dont hit the player every time
+                {                                                                                                    // do this if the distane between the enemy and the player is more then 5
+                     offset = new Vector3(player.transform.position.x - Random.Range(-bulletSpred, bulletSpred), player.transform.position.y, (player.transform.position.z - Random.Range(-bulletSpred, bulletSpred)));
+                }
+                else
+                {
+                    offset = player.transform.position; // if not ussing the innacuracy or if the enemy is close to the player, just set the hit point directorly on the player
+                }
+                spawnedBullet.transform.LookAt(offset);
             }
 
         }
