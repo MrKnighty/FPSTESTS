@@ -34,6 +34,9 @@ public class Shooting : MonoBehaviour
     public LayerMask lm;
     GameManager gm;
     
+    public ParticleSystem psBulletCasing;
+    public ParticleSystem psMuzzleFlash;
+    
 
     private void Start()
     {
@@ -42,6 +45,7 @@ public class Shooting : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         source = gameObject.GetComponent<AudioSource>();
         gm = Object.FindObjectOfType<GameManager>();
+        
     }
     private void OnEnable()
     {
@@ -75,6 +79,8 @@ public class Shooting : MonoBehaviour
             Invoke("ResetShoot", fireDelay); // to make a fire rate, invoke a function that will reset canshoot back to true
             currentAmmo--; //since theese guns have a limited mag size, remove 1;
             ammoText.text = ("Ammo:" + currentAmmo + "/" + maxAmmo); // after all caculations are done, display the current ammo
+            psBulletCasing.Play();
+            psMuzzleFlash.Play();
         }
         else if (currentAmmo <=0 && !reloading  && currentAmmo != maxAmmo || Input.GetKeyDown("r") && !reloading && currentAmmo != maxAmmo) // if the user hits r, or if the player runs out of ammo invoke the reaload function
         {

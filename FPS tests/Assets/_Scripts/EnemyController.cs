@@ -24,12 +24,15 @@ public class EnemyController : MonoBehaviour
 
     public LayerMask playerLM;
     public int damage;
-
+    
+    AudioSource soruce;
+    public AudioClip gunShot;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         gameObject.GetComponent<NavMeshAgent>();
         agent = gameObject.GetComponent<NavMeshAgent>();
+        soruce = gameObject.GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -70,6 +73,7 @@ public class EnemyController : MonoBehaviour
                     offset = player.transform.position; // if not ussing the innacuracy or if the enemy is close to the player, just set the hit point directorly on the player
                 }
                 spawnedBullet.transform.LookAt(offset);
+                soruce.PlayOneShot(gunShot);
             }
 
         }

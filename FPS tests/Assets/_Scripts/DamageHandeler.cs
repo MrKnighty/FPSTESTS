@@ -53,7 +53,7 @@ public class DamageHandeler : MonoBehaviour
 
 
         }
-            print (currentHealth / MaxHealth);
+//            print (currentHealth / MaxHealth);
             healthBar.fillAmount = currentHealth / MaxHealth; //this immage uses the fill horisontialy function, and this will slide it along
     }
 

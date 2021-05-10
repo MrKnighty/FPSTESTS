@@ -15,6 +15,11 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public float airMovementMultiplyer;
     public float mouseSens;
+
+    static bool hasHitCheckpoint;
+    //this is used for storing the position of the hit checkpoint, there are static because we need the info when reloading the scene
+    static Vector3 checkpointLocation;
+
     GameManager gm;
         float trueMoveSpeed; // this is the move speed that will be used for caculations, this will change when the player is mid air, so they dont have perfect air controll
     void Start()
@@ -23,14 +28,21 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         trueMoveSpeed = moveSpeed;
         gm = Object.FindObjectOfType<GameManager>();
+
+        if(hasHitCheckpoint) 
+        {
+            Vector3 location = checkpointLocation;
+            gameObject.transform.position = location;
+            print("spawning at checkpoint:" +  checkpointLocation);
+
+        }
     }
+
 
     private void Update()
     {
         
         if(gm.acceptInput) NewMovement();
-        
-
       
     }
 
@@ -76,6 +88,13 @@ public class PlayerMovement : MonoBehaviour
     public void DeathEvent()
     {
         dead = true;
+    }
+
+    public void SetCheckpoint(Vector3 location)
+    {
+        hasHitCheckpoint = true;
+        checkpointLocation = location;
+        print("setcheckpoint called");
     }
 
 }

@@ -23,11 +23,15 @@ public class EnemyWaveSpawner : MonoBehaviour
 {
     public WaveInfo[] waves; 
 
-    public int currentWave = -1; // this is the current lengh of the wave, its negetive since this is used with an array, and i dont want to start with 1
+    int currentWave = -1; // this is the current lengh of the wave, its negetive since this is used with an array, and i dont want to start with 1
+    static int completedWaves = -1; //how many waves the player has completed, this will be kept between level loads
     public int remaingenemies = 0; // how many enemies remain in the wave
     public bool doneSeccondWave; // if the seccond wave has been completed
     
-
+    void Start() 
+    {
+        currentWave = completedWaves;
+    }
 
     
     public void StartWave()
@@ -35,6 +39,7 @@ public class EnemyWaveSpawner : MonoBehaviour
         int i;
         i = 0;
         currentWave += 1; //advence the currnet wave
+        if(currentWave > waves.Length) currentWave--; // this is fail safe, if the player somehow triggers the wave trigger twice
         remaingenemies = waves[currentWave].enemies.Length; //set the remaining enemies, to the current enemie array lenght 
         foreach (GameObject enemies in waves[currentWave].enemies)
         {
@@ -98,11 +103,12 @@ public class EnemyWaveSpawner : MonoBehaviour
              {
                  StartSeccondWave();
              }
-             
+             completedWaves ++;
          }
          print("enemydefeated");
     }
 
 }
 
-    
+    //TODO:
+    // add a finished waves, instead of total waves to fix a expoit where the player can start the 3rd wave, by hittint the 2nd trigger,

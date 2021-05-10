@@ -36,6 +36,17 @@ public class Damager : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other) 
+    {
+        DamageHandeler dh;
+        if(dh = other.GetComponent<DamageHandeler>())
+        {
+            other.gameObject.GetComponent<DamageHandeler>().DoDamage(damage);
+        }
+
+
+    }
+
     public void ModifyDamage(int damageModifier) // this will be used to change the damage, depending on what weapon the player uses, or a possible power up
     {
         damage = damageModifier;

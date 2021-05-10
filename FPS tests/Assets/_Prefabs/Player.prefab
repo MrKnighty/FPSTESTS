@@ -18768,8 +18768,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 3366582588896120235}
   jumpHeight: 2
-  gravity: -15
-  moveSpeed: 2.5
+  gravity: -20
+  moveSpeed: 3.5
   airMovementMultiplyer: 1
   mouseSens: 2
 --- !u!114 &3366582589537047381
