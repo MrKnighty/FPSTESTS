@@ -20,7 +20,9 @@ public class EnemyController : MonoBehaviour
     public float agrooSeeDistance;
     public GameObject head;
 
-    public float fireRate;
+    public float fireRateLow;
+                            // theese numbers are both for how fast the ai will shoot
+    public float fireRateHigh;
 
     public LayerMask playerLM;
     public int damage;
@@ -63,7 +65,7 @@ public class EnemyController : MonoBehaviour
                 hasShot = true;
                 GameObject spawnedBullet = Instantiate(bullet, muzzlePoint.transform); // create a variable of the spawned object so we can point it at the player
                 spawnedBullet.gameObject.GetComponent<Damager>().ModifyDamage(damage);
-                Invoke("ResetShoot", fireRate);
+                Invoke("ResetShoot", Random.Range(fireRateLow, fireRateHigh)); // randomise the fire rate a bit, so all the enemies dont shoot uniformailly
                 if(useInnacuracy && Vector3.Distance(gameObject.transform.position, player.transform.position) >= 5) // randomly change the target in the xy directon to add some innacruacy so that the enemies dont hit the player every time
                 {                                                                                                    // do this if the distane between the enemy and the player is more then 5
                      offset = new Vector3(player.transform.position.x - Random.Range(-bulletSpred, bulletSpred), player.transform.position.y, (player.transform.position.z - Random.Range(-bulletSpred, bulletSpred)));

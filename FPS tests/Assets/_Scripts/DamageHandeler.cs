@@ -15,6 +15,9 @@ public class DamageHandeler : MonoBehaviour
     public Image healthBar;
 
      EnemyWaveSpawner waveSpawner;
+     public GameObject[] pickups;
+     public bool dropPickup;
+     public float pickupDropChance;
 
     bool isPlayer;
 
@@ -29,6 +32,12 @@ public class DamageHandeler : MonoBehaviour
         
 
     }
+
+    void Update() 
+    {
+        
+        if(Input.GetKeyDown("k")) DoDamage(50f);
+    }
     public void DoDamage(float damage)
     {
         currentHealth -= damage;
@@ -39,7 +48,7 @@ public class DamageHandeler : MonoBehaviour
         {
             waveSpawner.EnemyDefeated();
             gameObject.SetActive(false);
-            
+            if(dropPickup) rollPickup();
         }
         else if(currentHealth <=0 && isPlayer) // do a special death event for the player, since we need to do extra things besides deleting them
         {
@@ -55,6 +64,27 @@ public class DamageHandeler : MonoBehaviour
         }
 //            print (currentHealth / MaxHealth);
             healthBar.fillAmount = currentHealth / MaxHealth; //this immage uses the fill horisontialy function, and this will slide it along
+    }
+
+    public void Heal(float healAmount)
+    {
+        currentHealth += healAmount;
+        healthBar.fillAmount = currentHealth / MaxHealth;
+       // currentHealth = Mathf.Clamp(currentHealth, 0, MaxHealth);
+    }
+
+    void rollPickup()
+    {
+        print("calledPickup");
+        if(Random.Range(0, 10) >= pickupDropChance)
+        {
+           int desidedPickup = Random.Range(0, pickups.Length); 
+           GameObject pickup = Instantiate(pickups[desidedPickup], gameObject.transform);
+           pickup.transform.parent = null;
+           print("randomcalled");
+        }
+        
+        
     }
 
     

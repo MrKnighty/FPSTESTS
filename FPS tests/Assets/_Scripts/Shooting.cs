@@ -36,6 +36,11 @@ public class Shooting : MonoBehaviour
     
     public ParticleSystem psBulletCasing;
     public ParticleSystem psMuzzleFlash;
+
+    public bool useRecoil;
+    public float recoilAmount;
+
+    public GameObject cam;
     
 
     private void Start()
@@ -81,6 +86,8 @@ public class Shooting : MonoBehaviour
             ammoText.text = ("Ammo:" + currentAmmo + "/" + maxAmmo); // after all caculations are done, display the current ammo
             psBulletCasing.Play();
             psMuzzleFlash.Play();
+
+            if(useRecoil) Recoil();
         }
         else if (currentAmmo <=0 && !reloading  && currentAmmo != maxAmmo || Input.GetKeyDown("r") && !reloading && currentAmmo != maxAmmo) // if the user hits r, or if the player runs out of ammo invoke the reaload function
         {
@@ -90,7 +97,15 @@ public class Shooting : MonoBehaviour
             animator.Play("Reload");
             source.PlayOneShot(reload);
         }
+
+
     }
+
+    void Recoil()
+    {
+        cam.transform.Rotate(recoilAmount, Random.Range(-recoilAmount / 2, recoilAmount / 2), 0);
+    }
+
     void ResetShoot()
     {
         canShoot = true;
