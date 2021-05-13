@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public float airMovementMultiplyer;
     public float mouseSens;
+    public float footStepInteval;
 
     static bool hasHitCheckpoint;
     //this is used for storing the position of the hit checkpoint, there are static because we need the info when reloading the scene

@@ -17187,7 +17187,7 @@ MonoBehaviour:
   isAgroo: 0
   playerDead: 0
   useInnacuracy: 1
-  bulletSpred: 1
+  bulletSpred: 2
   muzzlePoint: {fileID: 491411428044510187}
   bullet: {fileID: 3455494416028990231, guid: 40f52858b023c664dba77ddfddf7f93c, type: 3}
   agrooDistance: 5

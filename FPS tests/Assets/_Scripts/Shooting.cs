@@ -27,7 +27,7 @@ public class Shooting : MonoBehaviour
     public int maxAmmo;
     public int damage;
 
-    bool reloading;
+    public bool reloading;
 
     public Text ammoText;
 
@@ -59,7 +59,11 @@ public class Shooting : MonoBehaviour
     private void OnDisable()
     {
         ammoText.text = (""); // clear the text when diseqipping the weapon
+        gameObject.GetComponent<Animator>().StopPlayback();
     }
+    
+    
+
     private void Update()
     {
         if (Input.GetMouseButton(0) && canShoot && currentAmmo! >= 1 && !reloading && gm.acceptInput) 
@@ -103,7 +107,7 @@ public class Shooting : MonoBehaviour
 
     void Recoil()
     {
-        cam.transform.Rotate(recoilAmount, Random.Range(-recoilAmount / 2, recoilAmount / 2), 0);
+        cam.transform.Rotate(recoilAmount, Random.Range(-recoilAmount / 2, recoilAmount /2), 0);
     }
 
     void ResetShoot()
