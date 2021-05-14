@@ -41,6 +41,8 @@ public class Shooting : MonoBehaviour
     public float recoilAmount;
 
     public GameObject cam;
+
+    public GameObject[] gunParts;
     
 
     private void Start()
@@ -60,6 +62,21 @@ public class Shooting : MonoBehaviour
     {
         ammoText.text = (""); // clear the text when diseqipping the weapon
         gameObject.GetComponent<Animator>().StopPlayback();
+    }
+
+    public void Disable()
+    {
+        foreach (GameObject parts in gunParts)
+        {
+            parts.SetActive(false);
+        }
+    }
+    public void Enable()
+    {
+        foreach (GameObject parts in gunParts)
+        {
+            parts.SetActive(false);
+        }
     }
     
     
@@ -82,7 +99,7 @@ public class Shooting : MonoBehaviour
              }
            
             
-            animator.Play("Shoot"); //play the animation event shoot
+            animator.SetTrigger("Shoot"); //play the animation event shoot
             source.PlayOneShot(gunShot); // play the sound gunshot
             canShoot = false; // to add a firerate, we disable shooting after the player has shoot one bullet, then we call a funtion that resets the shooting after x secconds
             Invoke("ResetShoot", fireDelay); // to make a fire rate, invoke a function that will reset canshoot back to true
@@ -98,7 +115,7 @@ public class Shooting : MonoBehaviour
             Invoke("Reload", reloadSpeed);
             reloading = true; // set realoding to true since, we dont want the player to shoot while reloading
             ammoText.text = ("RELOADING");
-            animator.Play("Reload");
+            animator.SetTrigger("Reload");
             source.PlayOneShot(reload);
         }
 

@@ -28,9 +28,13 @@ public class WeaponSwitch : MonoBehaviour
     {
         foreach (GameObject guns in guns)
         {
-            guns.gameObject.SetActive(false);
+           guns.GetComponent<Animator>().Play("Reload", 0, 0);
+           guns.gameObject.SetActive(false);
+           
+          // guns.gameObject.GetComponent<Shooting>().Disable();
         }
          guns[input].gameObject.SetActive(true);
+        // guns[input].gameObject.GetComponent<Shooting>().Enable();
     }
 
     public void UnlockWeapon(int ID)
