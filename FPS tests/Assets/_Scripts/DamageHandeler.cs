@@ -19,7 +19,11 @@ public class DamageHandeler : MonoBehaviour
      public bool dropPickup;
      public float pickupDropChance;
 
+     public bool spawnGameObjectOnDeath;
+     public GameObject ObjectToSpawn;
+
     bool isPlayer;
+    bool dieing; 
 
    // public Text hpText;
 
@@ -44,11 +48,20 @@ public class DamageHandeler : MonoBehaviour
         if(gameObject.tag == "Enemy") gameObject.GetComponent<EnemyController>().isAgroo = true; //if an enemy ever takes damage, when not agroo, set them to agroo
         
 
-        if(currentHealth <= 0 && !isPlayer)
+        if(currentHealth <= 0 && !isPlayer && !dieing) // check to see if this has allready been called, since if the enemy is hit by a multi pellet gun, this will run multiple times;
         {
+            dieing = true;
             waveSpawner.EnemyDefeated();
-            gameObject.SetActive(false);
+            GameObject dummy;
+
+            if(spawnGameObjectOnDeath) 
+            {
+               dummy = Instantiate(ObjectToSpawn, transform); 
+               dummy.transform.parent = null;
+            }
+            
             if(dropPickup) rollPickup();
+            gameObject.SetActive(false);
         }
         else if(currentHealth <=0 && isPlayer) // do a special death event for the player, since we need to do extra things besides deleting them
         {

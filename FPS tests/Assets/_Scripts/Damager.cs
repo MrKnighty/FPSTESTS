@@ -24,11 +24,15 @@ public class Damager : MonoBehaviour
 
         if (destroyOnCollide) // destroy object after a collsion has been done if true
         {
-            Destroy(this.gameObject);
+            if(collision.transform.tag != "Bullet")
+            {
+                Destroy(this.gameObject);
+            }
+            
             
         }
 
-        if (useParticles) 
+        if (useParticles && collision.transform.tag != "Player") 
         {
             GameObject spawnedParticles = Instantiate(particles, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(spawnedParticles, 1f);

@@ -35,6 +35,7 @@ public class EnemyController : MonoBehaviour
         gameObject.GetComponent<NavMeshAgent>();
         agent = gameObject.GetComponent<NavMeshAgent>();
         soruce = gameObject.GetComponent<AudioSource>();
+        soruce.volume = Object.FindObjectOfType<SettingsManager>().audioLevel;
     }
 
     private void Update()

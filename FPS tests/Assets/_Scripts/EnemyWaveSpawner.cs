@@ -29,23 +29,25 @@ public class EnemyWaveSpawner : MonoBehaviour
     public bool doneSeccondWave; // if the seccond wave has been completed
   
   
-    public void StartWave()
+    public void StartWave(int wave)
     {
         int i;
         i = 0;
-        currentWave += 1; //advence the currnet wave
+        currentWave = wave;
+        doneSeccondWave = false;
+        //currentWave += 1; //advence the currnet wave
         //if(currentWave > waves.Length) currentWave--; // this is fail safe, if the player somehow triggers the wave trigger twice
-        remaingenemies = waves[currentWave].enemies.Length; //set the remaining enemies, to the current enemie array lenght 
+        remaingenemies = waves[wave].enemies.Length; //set the remaining enemies, to the current enemie array lenght 
         foreach (GameObject enemies in waves[currentWave].enemies)
         {
-            Instantiate(waves[currentWave].enemies[i], waves[currentWave].spawnPoints[i].gameObject.transform.position, waves[currentWave].spawnPoints[i].transform.rotation); 
+            Instantiate(waves[wave].enemies[i], waves[wave].spawnPoints[i].gameObject.transform.position, waves[wave].spawnPoints[i].transform.rotation); 
             i ++;
             //this will spawn the enemies, in enemies, at the checkpoints in the array;
         }
         if(waves[currentWave].animateGameObjects) // if animategameobjects is true, then play the intro animation in all of the gameobjects in the array;
         {
 
-            foreach (GameObject objects in waves[currentWave].gameObjectsToAnimate)
+            foreach (GameObject objects in waves[wave].gameObjectsToAnimate)
             {
                 objects.GetComponent<Animator>().Play("Intro");
 
@@ -83,7 +85,7 @@ public class EnemyWaveSpawner : MonoBehaviour
     {
         if(Input.GetKeyDown("e")) //this is used for easy testing
         {
-            StartWave();
+           // StartWave();
         }
        
     }
