@@ -4,34 +4,27 @@ using UnityEngine;
 
 public class SettingsManager : MonoBehaviour
 {
-    public float audioLevel;
-    static float savedAudioLevel;
+    
     public static float mouseSensetiviy;
     static float fovLevel = 90f;
 
     private void Start() 
     {
-        audioLevel = savedAudioLevel;
         AudioSource[] sources = Object.FindObjectsOfType<AudioSource>();
-
-        foreach(AudioSource sauce in sources)
+        foreach(AudioSource source in sources)
         {
-            sauce.volume = savedAudioLevel;
+            source.volume = PlayerPrefs.GetFloat("AudioLevel");
         }
-
-        Camera.main.fieldOfView = fovLevel;
+        
+        Camera.main.fieldOfView = PlayerPrefs.GetFloat("FovLevel");
     }
     
-    private void Update() {
-        print(savedAudioLevel);
-    }
-
     public void ModifyAudioLevel(float level)
     {
-        savedAudioLevel = level;
+        PlayerPrefs.SetFloat("AudioLevel", level);
     }
     public void ModifyFovLevel(float level)
     {
-        fovLevel = level;
+        PlayerPrefs.SetFloat("FovLevel", level);
     }
 }

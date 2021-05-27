@@ -56,7 +56,7 @@ public class Shooting : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         source = gameObject.GetComponent<AudioSource>();
         gm = Object.FindObjectOfType<GameManager>();
-        source.volume = Object.FindObjectOfType<SettingsManager>().audioLevel;
+        source.volume = PlayerPrefs.GetFloat("AudioLevel");
         
     }
     private void OnEnable()

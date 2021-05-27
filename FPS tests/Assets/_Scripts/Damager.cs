@@ -5,6 +5,7 @@ using UnityEngine;
 public class Damager : MonoBehaviour
 {
     public float damage;
+    public float headshotMultiplyer;
 
     public bool destroyOnCollide;
 
@@ -17,9 +18,11 @@ public class Damager : MonoBehaviour
 
         if(dH = collision.gameObject.GetComponent<DamageHandeler>()) //check if collision has the damage handler to see if it can damage it.
         {
-            collision.gameObject.GetComponent<DamageHandeler>().DoDamage(damage);
-            
-            
+         collision.gameObject.GetComponent<DamageHandeler>().DoDamage(damage); 
+        }
+        else if(collision.transform.tag == "Head")
+        {
+            collision.gameObject.GetComponentInParent<DamageHandeler>().DoDamage(damage * headshotMultiplyer);
         }
 
         if (destroyOnCollide) // destroy object after a collsion has been done if true

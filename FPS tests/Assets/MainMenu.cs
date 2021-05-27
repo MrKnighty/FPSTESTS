@@ -22,5 +22,9 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(levelID);
     }
+    public void Exit()
+    {
+        Application.Quit();
+    }
 
 }

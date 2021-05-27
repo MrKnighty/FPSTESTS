@@ -18,6 +18,9 @@ public class WaveInfo // this is all in a class, so i can create an array of all
     public bool animateGameObjects2; 
     public GameObject[] gameObjectsToAnimate2; 
 
+    // public GameObject[] destinations;
+    // public bool[] willMove;
+
 }
 public class EnemyWaveSpawner : MonoBehaviour
 {
@@ -40,9 +43,12 @@ public class EnemyWaveSpawner : MonoBehaviour
         remaingenemies = waves[wave].enemies.Length; //set the remaining enemies, to the current enemie array lenght 
         foreach (GameObject enemies in waves[currentWave].enemies)
         {
-            Instantiate(waves[wave].enemies[i], waves[wave].spawnPoints[i].gameObject.transform.position, waves[wave].spawnPoints[i].transform.rotation); 
+            GameObject spawnedEnemy = Instantiate(waves[wave].enemies[i], waves[wave].spawnPoints[i].gameObject.transform.position, waves[wave].spawnPoints[i].transform.rotation); 
+            // spawnedEnemy.GetComponent<EnemyController>().SetDestination(waves[i].destinations[i], waves[i].willMove[i]);
+            // print(spawnedEnemy);
             i ++;
             //this will spawn the enemies, in enemies, at the checkpoints in the array;
+            
         }
         if(waves[currentWave].animateGameObjects) // if animategameobjects is true, then play the intro animation in all of the gameobjects in the array;
         {
@@ -52,9 +58,6 @@ public class EnemyWaveSpawner : MonoBehaviour
                 objects.GetComponent<Animator>().Play("Intro");
 
             }
-
-
-
         }
     }
     public void StartSeccondWave()

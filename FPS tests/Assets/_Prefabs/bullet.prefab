@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
+  headshotMultiplyer: 1.5
   destroyOnCollide: 1
   particles: {fileID: 819766065999911016, guid: 5d6aa37d63b928048a7468e8d3ffec18, type: 3}
   useParticles: 1

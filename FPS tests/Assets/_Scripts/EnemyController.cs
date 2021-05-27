@@ -29,20 +29,27 @@ public class EnemyController : MonoBehaviour
     
     AudioSource soruce;
     public AudioClip gunShot;
+
+    public bool randomisePosition;
+    public float randomRange;
+    public bool willMove;
+    public GameObject movePosition;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         gameObject.GetComponent<NavMeshAgent>();
         agent = gameObject.GetComponent<NavMeshAgent>();
         soruce = gameObject.GetComponent<AudioSource>();
-        soruce.volume = Object.FindObjectOfType<SettingsManager>().audioLevel;
+        soruce.volume = PlayerPrefs.GetFloat("AudioLevel");
     }
 
     private void Update()
     {
         
         head.transform.LookAt(player.transform);
+
         RaycastHit hit;
+
         if(Physics.Raycast(head.transform.position, head.transform.forward, out hit))
         {
             if(hit.transform.tag != "Player")
@@ -50,11 +57,30 @@ public class EnemyController : MonoBehaviour
                 isAgroo = false;
             }
         }
+        if(Physics.Raycast(head.transform.position, head.transform.forward, out hit, agrooSeeDistance))
+          {
+              if(hit.transform.tag == "Player")
+              {
+                  isAgroo = true;
+              }
+          }
 
-        if(isAgroo && !playerDead)
+
+
+
+
+        if(!playerDead && isAgroo)
         {
-            agent.destination = player.transform.position;
-            this.transform.LookAt(player.transform);
+            if(willMove)
+            {
+               agent.destination = player.transform.position;  
+            }
+            if(movePosition != null)
+            {
+                agent.destination = movePosition.transform.position;
+            }
+            
+            // this.transform.LookAt(player.transform);
             if(Vector3.Distance(this.transform.position, player.transform.position) < 5) // wjen the AI gets within 5 units of the player, stop moving
             {
                 agent.destination = this.transform.position;
@@ -82,23 +108,15 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-          if(Vector3.Distance(this.transform.position, player.transform.position) <= agrooDistance)
-          {
-              isAgroo = true;
-          }
-
-            
-
-          if(Physics.Raycast(head.transform.position, head.transform.forward, out hit, agrooSeeDistance))
-          {
-              if(hit.transform.tag == "Player")
-              {
-                  isAgroo = true;
-              }
-          }
         
             agent.destination = this.transform.position;
         }
+    }
+
+    public void SetDestination(GameObject destination, bool move)
+    {
+        movePosition = destination;
+        willMove = move;
     }
 
     void ResetShoot()
@@ -106,10 +124,12 @@ public class EnemyController : MonoBehaviour
         hasShot = false;
     }
 
-    void CheckToAgroo()
+    void Move()
     {
-
+    
     }
+
+    
 
 
 }

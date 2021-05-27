@@ -1,0 +1,38 @@
+
+
+Start
+{
+
+set current ammo to max ammo
+get the animator component from the game object
+get the audiosource component from the game ojbect
+find the game manager object in the scene
+find the settings manager in the scene and set this source volume to its audio level
+
+}
+
+
+OnEnable
+
+{
+set the ammo text to the current ammo of this gun
+
+}
+
+On Disable
+
+{
+ Set the ammo text to be blank
+stop playback of animations
+stop all corotuines
+set reloading to false
+}
+
+
+Update
+
+{
+
+
+
+}
