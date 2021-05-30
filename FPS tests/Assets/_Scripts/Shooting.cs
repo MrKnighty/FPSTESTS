@@ -93,7 +93,7 @@ public class Shooting : MonoBehaviour
                             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, Mathf.Infinity)) 
                             {                                                                                                       // this will point the bullet towards wherever the center of the screen is pointing at
                                 spawnedBullet.transform.LookAt(new Vector3(hit.point.x, hit.point.y, hit.point.z));                 // this makes it look like the bullet is coming out of the barrel, while also moving the bullet towards the screen
-                                print(hit.transform.tag);                                                                                            
+//                                print(hit.transform.tag);                                                                                            
                             }
                         
                             

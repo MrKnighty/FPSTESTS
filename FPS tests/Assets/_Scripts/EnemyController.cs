@@ -33,7 +33,9 @@ public class EnemyController : MonoBehaviour
     public bool randomisePosition;
     public float randomRange;
     public bool willMove;
+    public bool customPosition;
     public GameObject movePosition;
+    public int distanceBeforeStopping;
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -65,7 +67,10 @@ public class EnemyController : MonoBehaviour
               }
           }
 
-
+         if(customPosition)
+            {
+                agent.destination = movePosition.transform.position;
+            }
 
 
 
@@ -75,13 +80,10 @@ public class EnemyController : MonoBehaviour
             {
                agent.destination = player.transform.position;  
             }
-            if(movePosition != null)
-            {
-                agent.destination = movePosition.transform.position;
-            }
+           
             
             // this.transform.LookAt(player.transform);
-            if(Vector3.Distance(this.transform.position, player.transform.position) < 5) // wjen the AI gets within 5 units of the player, stop moving
+            if(Vector3.Distance(this.transform.position, player.transform.position) < distanceBeforeStopping && !customPosition) // wjen the AI gets within 5 units of the player, stop moving
             {
                 agent.destination = this.transform.position;
             }
@@ -109,7 +111,7 @@ public class EnemyController : MonoBehaviour
         else
         {
         
-            agent.destination = this.transform.position;
+           if(!customPosition) agent.destination = this.transform.position;
         }
     }
 

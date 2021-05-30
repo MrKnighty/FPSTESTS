@@ -65,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && groundedPlayer)
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+            transform.parent = null; // this is a failsafe for the moving platfroms if ontriggerexit does not get called;
         }
 
         playerVelocity.y += gravity * Time.deltaTime;

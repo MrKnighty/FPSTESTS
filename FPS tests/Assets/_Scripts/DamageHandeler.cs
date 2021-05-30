@@ -51,7 +51,7 @@ public class DamageHandeler : MonoBehaviour
         if(currentHealth <= 0 && !isPlayer && !dieing) // check to see if this has allready been called, since if the enemy is hit by a multi pellet gun, this will run multiple times;
         {
             dieing = true;
-            waveSpawner.EnemyDefeated();
+            //waveSpawner.EnemyDefeated();
             GameObject dummy;
 
             if(spawnGameObjectOnDeath) 

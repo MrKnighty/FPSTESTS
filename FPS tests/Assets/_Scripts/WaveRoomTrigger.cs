@@ -10,7 +10,7 @@ public class WaveRoomTrigger : MonoBehaviour
     {
         if (other.transform.tag == "Player")
         {
-            Object.FindObjectOfType<EnemyWaveSpawner>().StartWave(waveID);
+            Object.FindObjectOfType<NewWaveManager>().StartWave(waveID);
             Destroy(gameObject);
 
         }

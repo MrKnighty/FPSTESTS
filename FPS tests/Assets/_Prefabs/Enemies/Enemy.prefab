@@ -509,7 +509,7 @@ MonoBehaviour:
   bullet: {fileID: 3455494416028990231, guid: 40f52858b023c664dba77ddfddf7f93c, type: 3}
   agrooDistance: 5
   agrooSeeDistance: 20
-  head: {fileID: 6215311764115080800}
+  head: {fileID: 3353597058210324677}
   fireRateLow: 0.5
   fireRateHigh: 0.7
   playerLM:
@@ -519,6 +519,10 @@ MonoBehaviour:
   gunShot: {fileID: 8300000, guid: 82c59ee880910404bb635949292dc6c4, type: 3}
   randomisePosition: 0
   randomRange: 0
+  willMove: 1
+  customPosition: 0
+  movePosition: {fileID: 0}
+  distanceBeforeStopping: 0
 --- !u!114 &6215311764115080793
 MonoBehaviour:
   m_ObjectHideFlags: 0
