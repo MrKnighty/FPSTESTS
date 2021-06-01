@@ -39,7 +39,7 @@ public float recoilAmount
 
 public GameObject cam
 
-[SerializeField] FireMode _fireMode
+FireMode _fireMode
 
 public float pelletAmount
 public float smallPelletOffset
