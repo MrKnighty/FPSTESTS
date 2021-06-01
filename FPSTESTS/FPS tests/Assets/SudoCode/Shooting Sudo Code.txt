@@ -1,0 +1,176 @@
+
+
+Enum FireModes Single Shot, Shotgun Shot
+
+public GameObject bullet
+public bool canShoot
+public float fire delay
+public float reload speed
+
+public audioClip gunShot
+public AudioClip reload
+
+audiosource source
+
+animator animator
+
+public transform muzzlepoint
+
+public int currentAmmo
+public int maxLoadedAmmo 
+public int currentAmmoPool
+public int MaxAmmoPool
+public int damage
+
+public bool reloading
+
+public Text ammoText
+
+public LayerMask lm
+
+GameManager gm
+    
+public ParticleSystem psBulletCasing
+public ParticleSystem psMuzzleFlash
+
+public bool useRecoil
+
+public float recoilAmount
+
+public GameObject cam
+
+[SerializeField] FireMode _fireMode
+
+public float pelletAmount
+public float smallPelletOffset
+public float largePelletOffset
+
+
+Start
+{
+
+set current ammo to max ammo
+get the animator component from the game object
+get the audiosource component from the game ojbect
+find the game manager object in the scene
+find the settings manager in the scene and set this source volume to its audio level
+
+}
+
+
+OnEnable
+
+{
+set the ammo text to the current ammo of this gun
+
+}
+
+On Disable
+
+{
+ Set the ammo text to be blank
+stop playback of animations
+stop all corotuines
+set reloading to false
+}
+
+
+Update
+
+{
+Switch case FireModes
+
+	case FireMOde:Single Shot
+	{
+		if the player, is holding down the left mouse button, they can shoot, and they have atleast 1 bullet, and if they are not reloading, and if they are not dead:
+		
+		get the mainCamera
+		RaycastHit hit
+		
+		Spawn in a bullet, at the position, and rotation of the muzzle point, then put that bullet into a gameobject variable	
+		get the damage handler in the bullet, then set the damage of that script to the damage variable of this script
+		deparent the bullet so it does not move with the player
+		
+		do a raycast from the players camera, to wherever their looking, then make the spawned bullet look at wherever the raycast hit
+
+		Play the shooting animation, play the shooting sound, set can shoot to false, call reset shoot in x secconds, minus the current ammo by 1, set the ammo text to the new ammount, play the muzzle flash and bulletcasing partricle effect
+		
+		if using recoil, then call the recoil function
+		
+
+		else if current ammo = 0, not reloading, and current ammo pool does not equal zero, or the player has pushed r
+		
+		start the coroutine reload
+		set reloading to true
+		set the ammo text to reloading		
+		play the reloading animation, and sound
+
+
+	case FireMode Multishot
+	
+	if the player, is holding down the left mouse button, they can shoot, and they have atleast 1 bullet, and if they are not reloading, and if they are not dead:
+	
+	get the mainCamera
+	RaycastHit hit
+
+	for the int pellets
+
+	spawn in a bullet, at the position and rotation of the muzzle point, then put that bullet into a gameobject variable
+	get the damage handeler in the bullet, then set the damage of that script to the damage variable of this script
+	deparent the bullet, so that it does not move with the player
+
+	do a raycast from the players camera, to wherever their looking, then store that
+
+	if we have shot less then half of the current pellets then
+
+		make the spawned bullet look at the raycast hit, but add a random offset between negetive smallpelletOffset, and posotive small pellet offset to the x, y and z
+		
+	else
+		do the same, but use largePelletOffset instead.
+
+
+
+	Play the shooting animation, play the shooting sound, set can shoot to false, call reset shoot in x secconds, minus the current ammo by 1, set the ammo text to the new ammount, play the muzzle flash and bulletcasing partricle effect
+	
+	
+	else if current ammo = 0, not reloading, and current ammo pool does not equal zero, or the player has pushed r
+		
+		start the coroutine reload
+		set reloading to true
+		set the ammo text to reloading		
+		play the reloading animation, and sound
+
+
+
+
+	}
+
+void Recoil
+
+rotate the camera on the x and y, using a random number between - recoil amount and posotive recoil amount
+
+
+void resetShoot
+
+canshoot = true
+
+
+
+Ienumerator Reload
+
+
+wait for reloadspeed secconds
+
+add the remaing bullets in the gun to the ammo pool
+
+add a number between 0, and maxloaded ammo to the current ammo, then take that much out of the ammo pool
+
+set reloading to false
+
+update the ammo text to the new amount
+
+
+
+
+
+}
