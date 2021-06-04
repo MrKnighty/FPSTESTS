@@ -31,7 +31,7 @@ public class DamageHandeler : MonoBehaviour
     {
         currentHealth = MaxHealth;
         if(gameObject.tag == "Player") isPlayer = true;
-  //      if(isPlayer) hpText.text = ("Health: " + currentHealth); 
+         if(isPlayer) healthBar.fillAmount = currentHealth / MaxHealth;
         waveSpawner = Object.FindObjectOfType<EnemyWaveSpawner>();
         
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3620799688503842024}
   - component: {fileID: 1409378029061204290}
   - component: {fileID: 7480242412344773202}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: EnemyHealthBarBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 686446322405621035}
   - component: {fileID: 1353784424184644380}
   - component: {fileID: 7330456731475758966}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7658189348213461374}
   - component: {fileID: 7873487667455418091}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 5710657116229658753}
   - component: {fileID: 1273859668876795520}
   - component: {fileID: 7797874672040073300}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Head
   m_TagString: Head
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 8524765538033921239}
   - component: {fileID: 7270781936041893283}
   - component: {fileID: 1133234897908083798}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: EnemyHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 6215311764115080793}
   - component: {fileID: 6215311764115080798}
   - component: {fileID: 7659576942852921547}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -508,7 +508,7 @@ MonoBehaviour:
   muzzlePoint: {fileID: 6215311764477863845}
   bullet: {fileID: 3455494416028990231, guid: 40f52858b023c664dba77ddfddf7f93c, type: 3}
   agrooDistance: 5
-  agrooSeeDistance: 20
+  agrooSeeDistance: 50
   head: {fileID: 3353597058210324677}
   fireRateLow: 0.5
   fireRateHigh: 0.7
@@ -525,6 +525,9 @@ MonoBehaviour:
   movePosition: {fileID: 0}
   distanceBeforeStopping: 3
   footStepInteval: 1
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &6215311764115080793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,7 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8ca97b322302c41923ebee43e58797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 4
+  MaxHealth: 6
   currentHealth: 0
   deathUI: {fileID: 0}
   healthBar: {fileID: 1133234897908083798}
@@ -674,7 +677,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6215311764477863844}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -708,7 +711,7 @@ GameObject:
   - component: {fileID: 6215311765115390806}
   - component: {fileID: 6215311765115390807}
   - component: {fileID: 6215311765115390804}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1519,7 +1522,7 @@ GameObject:
   - component: {fileID: 6215311765197706740}
   - component: {fileID: 6215311765197706741}
   - component: {fileID: 6215311765197706746}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1831,7 +1834,7 @@ GameObject:
   - component: {fileID: 6215311765296705504}
   - component: {fileID: 6215311765296705505}
   - component: {fileID: 6215311765296705510}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2861,7 +2864,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6215311765302535233}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pistol (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,14 +11,14 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - Bullet
   - PostProcessing
-  - 
-  - 
-  - 
+  - Trigger
+  - PlayerBullet
+  - Player
   - 
   - 
   - 

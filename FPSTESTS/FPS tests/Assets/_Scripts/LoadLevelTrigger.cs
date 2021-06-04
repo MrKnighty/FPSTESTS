@@ -14,6 +14,7 @@ public class LoadLevelTrigger : MonoBehaviour
         {
             if(loadNextLevel)  SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
             else SceneManager.LoadScene (Levelid);
+            other.GetComponent<PlayerMovement>().resetCheckpoint();
         }
         
 

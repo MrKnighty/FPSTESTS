@@ -40,6 +40,8 @@ public class EnemyController : MonoBehaviour
 
     float stepCooldown;
     public float footStepInteval;
+    
+    public LayerMask ignoreLayer; 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -52,16 +54,16 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
         
-        head.transform.LookAt(player.transform);
+        transform.LookAt(player.transform);
         RaycastHit hit;
-        if(Physics.Raycast(head.transform.position, head.transform.forward, out hit))
+        if(Physics.Raycast(transform.position, head.transform.forward, out hit))
         {
             if(hit.transform.tag != "Player")
             {
                 isAgroo = false;
             }
         }
-        if(Physics.Raycast(head.transform.position, head.transform.forward, out hit, agrooSeeDistance))
+        if(Physics.Raycast(transform.position, head.transform.forward, out hit, agrooSeeDistance))
           {
               if(hit.transform.tag == "Player")
               {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3814111507806877037}
   - component: {fileID: 1539885615338604743}
   - component: {fileID: 6998295582113278935}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: EnemyHealthBarBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 491411427692563594}
   - component: {fileID: 491411427692563593}
   - component: {fileID: 491411427692563592}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3155,7 +3155,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 491411428044510188}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3189,7 +3189,7 @@ GameObject:
   - component: {fileID: 491411428290643028}
   - component: {fileID: 491411428290643027}
   - component: {fileID: 491411428290643026}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3508,7 +3508,7 @@ GameObject:
   - component: {fileID: 491411428405554023}
   - component: {fileID: 491411428405554022}
   - component: {fileID: 491411428405554021}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ForeGrip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7307,7 +7307,7 @@ GameObject:
   - component: {fileID: 491411428545250252}
   - component: {fileID: 491411428545250251}
   - component: {fileID: 491411428545250250}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Stock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7852,7 +7852,7 @@ GameObject:
   m_Component:
   - component: {fileID: 491411428568068360}
   - component: {fileID: 491411428568068361}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tommy Gun (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7983,7 +7983,7 @@ GameObject:
   - component: {fileID: 491411428879058562}
   - component: {fileID: 491411428879058561}
   - component: {fileID: 491411428879058560}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11353,7 +11353,7 @@ GameObject:
   - component: {fileID: 491411428879249916}
   - component: {fileID: 491411428879249915}
   - component: {fileID: 491411428879249914}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12789,7 +12789,7 @@ GameObject:
   - component: {fileID: 491411429612027699}
   - component: {fileID: 491411429612027698}
   - component: {fileID: 491411429612027697}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15861,7 +15861,7 @@ GameObject:
   - component: {fileID: 491411429771610664}
   - component: {fileID: 491411429771610679}
   - component: {fileID: 491411429771610678}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TriggerGrip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16810,7 +16810,7 @@ GameObject:
   - component: {fileID: 1105465879531822254}
   - component: {fileID: 1447981864612045465}
   - component: {fileID: 7163779604248325875}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16911,9 +16911,9 @@ GameObject:
   - component: {fileID: 7752356622404058990}
   - component: {fileID: 4362399649623223960}
   - component: {fileID: 6243217773295060493}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Head
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16926,7 +16926,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867517472085129121}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.584, z: 0.339}
+  m_LocalPosition: {x: -0, y: 0.547, z: 0.339}
   m_LocalScale: {x: 0.64826035, y: 0.16702347, z: 0.37006}
   m_Children:
   - {fileID: 7511097915347432049}
@@ -16993,8 +16993,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.3705771, y: 3.765604, z: 1.5023056}
+  m_Center: {x: 0.008074291, y: -0.015635872, z: 0.2511516}
 --- !u!1 &5252192462365518108
 GameObject:
   m_ObjectHideFlags: 0
@@ -17006,7 +17006,7 @@ GameObject:
   - component: {fileID: 8115439251276156242}
   - component: {fileID: 7077083220193950758}
   - component: {fileID: 678872795248070099}
-  m_Layer: 5
+  m_Layer: 3
   m_Name: EnemyHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17086,7 +17086,7 @@ GameObject:
   - component: {fileID: 5805387352158365660}
   - component: {fileID: 5805387352158365659}
   - component: {fileID: 7587253864944923069}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Machiene Gunner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17191,7 +17191,7 @@ MonoBehaviour:
   muzzlePoint: {fileID: 491411428044510187}
   bullet: {fileID: 3455494416028990231, guid: 40f52858b023c664dba77ddfddf7f93c, type: 3}
   agrooDistance: 5
-  agrooSeeDistance: 20
+  agrooSeeDistance: 50
   head: {fileID: 5805387352158365669}
   fireRateLow: 0.2
   fireRateHigh: 0.3
@@ -17200,6 +17200,17 @@ MonoBehaviour:
     m_Bits: 0
   damage: 1
   gunShot: {fileID: 8300000, guid: 9aa443050e27ff242978a13ad2ea8a7f, type: 3}
+  footstep: {fileID: 0}
+  randomisePosition: 0
+  randomRange: 0
+  willMove: 0
+  customPosition: 0
+  movePosition: {fileID: 0}
+  distanceBeforeStopping: 0
+  footStepInteval: 0
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &5805387352158365660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17212,7 +17223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8ca97b322302c41923ebee43e58797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 4
+  MaxHealth: 8
   currentHealth: 0
   deathUI: {fileID: 0}
   healthBar: {fileID: 678872795248070099}
@@ -17231,7 +17242,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

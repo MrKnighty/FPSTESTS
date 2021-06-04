@@ -4886,7 +4886,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185137727}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.059000045, y: 0.7082554, z: 0.00000006680978}
+  m_LocalPosition: {x: -0.059, y: 1.279, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 625170436}
@@ -13918,7 +13918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04406631aa1c57498698c3e0124eb52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3455494416028990231, guid: 40f52858b023c664dba77ddfddf7f93c, type: 3}
+  bullet: {fileID: 3455494416028990231, guid: 64be6b103087ee747a22ea01f1cbfcdf, type: 3}
   canShoot: 1
   fireDelay: 0.4
   reloadSpeed: 1
@@ -13932,9 +13932,6 @@ MonoBehaviour:
   damage: 2
   reloading: 0
   ammoText: {fileID: 0}
-  lm:
-    serializedVersion: 2
-    m_Bits: 0
   psBulletCasing: {fileID: 934482721}
   psMuzzleFlash: {fileID: 1963592724}
   useRecoil: 0
@@ -56359,7 +56356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04406631aa1c57498698c3e0124eb52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3455494416028990231, guid: 40f52858b023c664dba77ddfddf7f93c, type: 3}
+  bullet: {fileID: 3455494416028990231, guid: 64be6b103087ee747a22ea01f1cbfcdf, type: 3}
   canShoot: 1
   fireDelay: 0.1
   reloadSpeed: 3
@@ -56373,9 +56370,6 @@ MonoBehaviour:
   damage: 1
   reloading: 0
   ammoText: {fileID: 0}
-  lm:
-    serializedVersion: 2
-    m_Bits: 0
   psBulletCasing: {fileID: 1996530764}
   psMuzzleFlash: {fileID: 148735167}
   useRecoil: 1
@@ -56600,7 +56594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04406631aa1c57498698c3e0124eb52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3455494416028990231, guid: 40f52858b023c664dba77ddfddf7f93c, type: 3}
+  bullet: {fileID: 3455494416028990231, guid: 64be6b103087ee747a22ea01f1cbfcdf, type: 3}
   canShoot: 1
   fireDelay: 0.45
   reloadSpeed: 2
@@ -56614,9 +56608,6 @@ MonoBehaviour:
   damage: 5
   reloading: 0
   ammoText: {fileID: 0}
-  lm:
-    serializedVersion: 2
-    m_Bits: 0
   psBulletCasing: {fileID: 323493374}
   psMuzzleFlash: {fileID: 1798387681}
   useRecoil: 1
@@ -85084,7 +85075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04406631aa1c57498698c3e0124eb52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3455494416028990231, guid: 40f52858b023c664dba77ddfddf7f93c, type: 3}
+  bullet: {fileID: 3455494416028990231, guid: 64be6b103087ee747a22ea01f1cbfcdf, type: 3}
   canShoot: 1
   fireDelay: 0.3
   reloadSpeed: 1
@@ -85098,9 +85089,6 @@ MonoBehaviour:
   damage: 2
   reloading: 0
   ammoText: {fileID: 0}
-  lm:
-    serializedVersion: 2
-    m_Bits: 0
   psBulletCasing: {fileID: 2084680591}
   psMuzzleFlash: {fileID: 594367519}
   useRecoil: 0
@@ -85243,7 +85231,7 @@ GameObject:
   - component: {fileID: 239899741}
   - component: {fileID: 1586105495}
   - component: {fileID: 1586105494}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -85342,7 +85330,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 90
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
@@ -85366,6 +85354,8 @@ MonoBehaviour:
   airMovementMultiplyer: 1
   mouseSens: 2
   footStepInteval: 0
+  spawnpointGraceHP: 0
+  coyoteTime: 0.3
 --- !u!114 &3366582589537047381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85396,7 +85386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8ca97b322302c41923ebee43e58797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 100
+  MaxHealth: 120
   currentHealth: 0
   deathUI: {fileID: 0}
   healthBar: {fileID: 0}
@@ -108393,32 +108383,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04406631aa1c57498698c3e0124eb52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 3455494416028990231, guid: 40f52858b023c664dba77ddfddf7f93c, type: 3}
+  bullet: {fileID: 3455494416028990231, guid: 64be6b103087ee747a22ea01f1cbfcdf, type: 3}
   canShoot: 1
   fireDelay: 0.3
-  reloadSpeed: 1.2
+  reloadSpeed: 2.5
   gunShot: {fileID: 8300000, guid: 82c59ee880910404bb635949292dc6c4, type: 3}
   reload: {fileID: 8300000, guid: 63fe918109af6ac4b9011148a4b7187e, type: 3}
   muzzlePoint: {fileID: 3366582589637135907}
   currentAmmo: 2
   maxLoadedAmmo: 2
-  currentAmmoPool: 10
-  MaxAmmoPool: 0
+  currentAmmoPool: 0
+  MaxAmmoPool: 6
   damage: 2
   reloading: 0
   ammoText: {fileID: 0}
-  lm:
-    serializedVersion: 2
-    m_Bits: 0
   psBulletCasing: {fileID: 626629995}
   psMuzzleFlash: {fileID: 626629995}
-  useRecoil: 0
-  recoilAmount: 1
+  useRecoil: 1
+  recoilAmount: -4
   cam: {fileID: 3366582588896120238}
   _fireMode: 1
   pelletAmount: 10
-  smallPelletOffset: 0.25
-  largePelletOffset: 0.5
+  smallPelletOffset: 0.5
+  largePelletOffset: 1
 --- !u!82 &4429218593547713926
 AudioSource:
   m_ObjectHideFlags: 0
@@ -108602,6 +108589,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 3366582588896120238}
+    - target: {fileID: 6679163237902462842, guid: 2eee8c8026b65194abf099c3c8461aa2, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 3455494416028990231, guid: 64be6b103087ee747a22ea01f1cbfcdf, type: 3}
     - target: {fileID: 6679163237902462842, guid: 2eee8c8026b65194abf099c3c8461aa2, type: 3}
       propertyPath: ammoText
       value: 

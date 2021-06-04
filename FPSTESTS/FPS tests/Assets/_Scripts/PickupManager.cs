@@ -9,12 +9,13 @@ public class PickupManager : MonoBehaviour
     public float healAmount;
     public int ammoAmount;
     public int ammoID;
+    public bool rotate;
 
     public float rotateSpeed;
     [SerializeField] pickupType _pickupType;
      void Update() 
     {
-        gameObject.transform.Rotate(new Vector3(rotateSpeed * Time.deltaTime, 0, 0)); // rotate the health on the spot
+      if(rotate)  gameObject.transform.Rotate(new Vector3(rotateSpeed * Time.deltaTime, 0, 0)); // rotate the health on the spot
     }
      
      void OnTriggerEnter(Collider other) 

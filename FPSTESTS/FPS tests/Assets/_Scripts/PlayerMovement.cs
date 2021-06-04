@@ -8,13 +8,12 @@ public class PlayerMovement : MonoBehaviour
     CharacterController characterController; // store a refrence of the charatercontroller
 
     public Transform mainCamera;
-    public float jumpHeight;
-    public float gravity;
-    bool dead;
+    public float jumpHeight; // how high the player can jump
+    public float gravity; // how fast the player will fall after hitting the apex of their jump
 
-    Vector3 playerVelocity;
-    public float moveSpeed;
-    public float airMovementMultiplyer;
+    Vector3 playerVelocity; // how fast the player is planned to move
+    public float moveSpeed; // how fast the player will move
+    public float airMovementMultiplyer; // a multiplyer that will determine how much faster/ slower they will move when not toching ground
     public float mouseSens;
     public float footStepInteval;
 
@@ -22,6 +21,12 @@ public class PlayerMovement : MonoBehaviour
     //this is used for storing the position of the hit checkpoint, there are static because we need the info when reloading the scene
     static Vector3 checkpointLocation;
     static bool hasSpawned;
+    static float spawnpointHP;
+    public float spawnpointGraceHP;
+    
+    public float coyoteTime; // this is a grace period when the player starts to fall off a platform, put pushes jump a couple frames after falling
+    float trueCoyoteTime;
+    bool canJump;
 
     GameManager gm;
         float trueMoveSpeed; // this is the move speed that will be used for caculations, this will change when the player is mid air, so they dont have perfect air controll
@@ -37,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
             Vector3 location = checkpointLocation;
             gameObject.transform.position = location;
             print("spawning at checkpoint:" +  checkpointLocation);
+            if(spawnpointHP <= 30) spawnpointHP = spawnpointGraceHP; // this is so the player does not get stuck on a checkpoint if they hit it at an extreamly low hp, meaning they cant progress, so insted cap how low it can go
+            gameObject.GetComponent<DamageHandeler>().DoDamage((120 - spawnpointHP));
 
         }
 
@@ -59,6 +66,22 @@ public class PlayerMovement : MonoBehaviour
     {
         
         if(gm.acceptInput) NewMovement();
+
+
+        if(characterController.isGrounded)
+        {
+            canJump = true;
+            trueCoyoteTime = coyoteTime;
+        }
+        else
+        {
+            trueCoyoteTime -= Time.deltaTime;
+            if(trueCoyoteTime <= 0)
+            {
+                canJump = false;
+            }
+        }
+        
       
     }
 
@@ -66,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
     void NewMovement()
     {
         bool groundedPlayer = characterController.isGrounded;
-        if (groundedPlayer && playerVelocity.y < 0)
+        if (canJump && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
         }
@@ -77,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
        
 
         // Changes the height position of the player..
-        if (Input.GetButtonDown("Jump") && groundedPlayer)
+        if (Input.GetButtonDown("Jump") && canJump)
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
             transform.parent = null; // this is a failsafe for the moving platfroms if ontriggerexit does not get called;
@@ -99,17 +122,6 @@ public class PlayerMovement : MonoBehaviour
             trueMoveSpeed = moveSpeed; // when the player is grounded again reset movespeed
 
         }
-
-       
-        {
-
-        }
-
-    }
-
-    public void DeathEvent()
-    {
-        dead = true;
     }
 
     public void SetCheckpoint(Vector3 location)
@@ -117,6 +129,12 @@ public class PlayerMovement : MonoBehaviour
         hasHitCheckpoint = true;
         checkpointLocation = location;
         print("setcheckpoint called");
+        spawnpointHP = gameObject.GetComponent<DamageHandeler>().currentHealth;
+    }
+    public void resetCheckpoint()
+    {
+        hasHitCheckpoint = false;
+        spawnpointHP = 120;
     }
 
 }
