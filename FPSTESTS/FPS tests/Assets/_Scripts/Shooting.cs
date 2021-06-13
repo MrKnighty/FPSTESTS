@@ -54,7 +54,7 @@ public class Shooting : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         source = gameObject.GetComponent<AudioSource>();
         gm = Object.FindObjectOfType<GameManager>();
-        source.volume = PlayerPrefs.GetFloat("AudioLevel");
+        source.volume = PlayerPrefs.GetFloat("AudioLevel"); // load the audiolevel from playerprefs, and set the sources volume to it
         currentAmmoPool = MaxAmmoPool; //start the player with max ammo
         
     }
@@ -87,11 +87,11 @@ public class Shooting : MonoBehaviour
 
                             GameObject spawnedBullet = Instantiate(bullet, muzzlePoint.transform.position, muzzlePoint.transform.rotation); //spawn the bullet at the muzzle point
                             spawnedBullet.gameObject.GetComponent<Damager>().ModifyDamage(damage); //modify the damage of the spawned bullet
-                            spawnedBullet.transform.parent = null; // deparent the bullet, so that the bullet does not get destroied, one the enenemy dies
+                            spawnedBullet.transform.parent = null; // deparent the bullet, so that the bullet does not get destroied, 
 
                             if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, Mathf.Infinity)) 
                             {                                                                                                       // this will point the bullet towards wherever the center of the screen is pointing at
-                                spawnedBullet.transform.LookAt(new Vector3(hit.point.x, hit.point.y, hit.point.z));                 // this makes it look like the bullet is coming out of the barrel, while also moving the bullet towards the screen
+                                 spawnedBullet.transform.LookAt(new Vector3(hit.point.x, hit.point.y, hit.point.z));                 // this makes it look like the bullet is coming out of the barrel, while also moving the bullet towards the middle of the screen
 //                                print(hit.transform.tag);                                                                                            
                             }
                         
@@ -169,14 +169,9 @@ public class Shooting : MonoBehaviour
                             animator.SetTrigger("Reload");
                             source.PlayOneShot(reload);
                         }
-
-
                 break;
             }
-
-
         }
-
     }
 
     void Recoil()
@@ -184,7 +179,7 @@ public class Shooting : MonoBehaviour
         cam.transform.Rotate(recoilAmount, Random.Range(-recoilAmount / 2, recoilAmount /2), 0); // rotate the camera on the x unsing the recoil amount, then randomly choose a number for the y roation
     }
 
-    void ResetShoot()
+    void ResetShoot() 
     {
         canShoot = true;
     }

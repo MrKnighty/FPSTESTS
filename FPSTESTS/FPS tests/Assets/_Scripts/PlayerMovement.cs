@@ -82,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         
+        
       
     }
 
@@ -104,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
             transform.parent = null; // this is a failsafe for the moving platfroms if ontriggerexit does not get called;
+            canJump = false;
         }
 
         playerVelocity.y += gravity * Time.deltaTime;

@@ -49,7 +49,7 @@ public class SettingsManager : MonoBehaviour
     }
 
      void Update() {
-        if(Input.GetKeyDown(KeyCode.F10)) PlayerPrefs.DeleteAll();
+        //if(Input.GetKeyDown(KeyCode.F10)) PlayerPrefs.DeleteAll();
         
         
     }

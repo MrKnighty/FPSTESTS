@@ -24,6 +24,16 @@ public class WeaponSwitch : MonoBehaviour
         if (Input.GetKeyDown("3") && unlockedGuns[0] == true && gm.acceptInput && currentGun != 2) SwitchWeapon(2);
         if (Input.GetKeyDown("4") && unlockedGuns[0] == true && gm.acceptInput && currentGun != 3) SwitchWeapon(3);
        // if (Input.GetKeyDown("5") && unlockedGuns[0] == true && gm.acceptInput && currentGun != 4) SwitchWeapon(4);
+
+
+
+       if(Input.GetKeyDown(KeyCode.F10))
+       {
+           foreach(GameObject gunz in guns)
+           {
+               gunz.gameObject.SetActive(true);
+           }
+       }
         
     }
     void SwitchWeapon(int input)

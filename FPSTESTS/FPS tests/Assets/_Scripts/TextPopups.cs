@@ -8,6 +8,7 @@ public class TextPopups : MonoBehaviour
    public Text interactionText;
    public int popupDistance;
    public string message;
+   bool textActive;
    
    GameObject player;
    
@@ -20,10 +21,12 @@ public class TextPopups : MonoBehaviour
         if(Vector3.Distance(this.transform.position, player.transform.position) <= popupDistance)
         {
             interactionText.text = message;
+            textActive = true;
         }
-        else
+        else if(textActive) // this will make sure this script isnt constantly clearing the text
         {
             interactionText.text = "";
+            textActive = false;
         }
     }
 }

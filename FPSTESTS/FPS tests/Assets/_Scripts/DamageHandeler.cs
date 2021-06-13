@@ -31,11 +31,12 @@ public class DamageHandeler : MonoBehaviour
     {
         currentHealth = MaxHealth;
         if(gameObject.tag == "Player") isPlayer = true;
-         if(isPlayer) healthBar.fillAmount = currentHealth / MaxHealth;
+        // if(isPlayer) healthBar.fillAmount = currentHealth / MaxHealth;
         waveSpawner = Object.FindObjectOfType<EnemyWaveSpawner>();
         
 
     }
+    
 
     void Update() 
     {
@@ -82,6 +83,7 @@ public class DamageHandeler : MonoBehaviour
     public void Heal(float healAmount)
     {
         currentHealth += healAmount;
+        currentHealth = Mathf.Clamp(currentHealth, 0, MaxHealth);
         healthBar.fillAmount = currentHealth / MaxHealth;
        // currentHealth = Mathf.Clamp(currentHealth, 0, MaxHealth);
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickupManager : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class PickupManager : MonoBehaviour
     public int ammoAmount;
     public int ammoID;
     public bool rotate;
-
     public float rotateSpeed;
     [SerializeField] pickupType _pickupType;
      void Update() 
@@ -27,20 +27,25 @@ public class PickupManager : MonoBehaviour
             {
                 case pickupType.Health:
                 {
-                     other.gameObject.GetComponent<DamageHandeler>().Heal(healAmount);
-                     Destroy(this.gameObject);
+                    other.gameObject.GetComponent<DamageHandeler>().Heal(healAmount);
+                    StartCoroutine("DisplayText", ("Pickuped: " + healAmount + " " + _pickupType));
+                    Destroy(this.gameObject);
                     break;
                 }
 
                 case pickupType.Ammo:
                 {
                     other.GetComponent<WeaponSwitch>().AddAmmo(ammoID, ammoAmount);
+                  //  StartCoroutine("DisplayText", ("Pickuped: " + ammoAmount + " Bullets"));
+                    
                     Destroy(gameObject);
                     break;
                 }
             }
         }
     }
+
+
 }
     
 
